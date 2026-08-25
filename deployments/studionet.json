@@ -1,0 +1,75 @@
+{
+  "batch": "B",
+  "contract_address": "0xB89CfedB9495a44f0E2a35EDfdCA77CE0Db495e0",
+  "contract_source": {
+    "deployed_source_sha256": "3fe5391818f88794f49b8332937c11be0ef02117ffaae4ca9782d882690d8fb8",
+    "path": "contracts/change_point_watch.py",
+    "runner": "py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6",
+    "source_exact_for_deployment": true,
+    "source_sha256": "3fe5391818f88794f49b8332937c11be0ef02117ffaae4ca9782d882690d8fb8"
+  },
+  "deployment_transaction_hash": "0x4fa5073f936228b7240ed68e13720559c1a3c4b89e971d98461c39b4f6b8743a",
+  "explorer": {
+    "contract": "https://explorer-studio.genlayer.com/address/0xB89CfedB9495a44f0E2a35EDfdCA77CE0Db495e0",
+    "deployment_transaction": "https://explorer-studio.genlayer.com/tx/0x4fa5073f936228b7240ed68e13720559c1a3c4b89e971d98461c39b4f6b8743a",
+    "intelligent_transaction": "https://explorer-studio.genlayer.com/tx/0x4ece532d5de99ad77071e420704f152809bfba22d771577a964a7ed552f2c0f8"
+  },
+  "intelligent_transaction_hash": "0x4ece532d5de99ad77071e420704f152809bfba22d771577a964a7ed552f2c0f8",
+  "network": {
+    "chain_id": 61999,
+    "name": "studionet",
+    "rpc": "https://studio.genlayer.com/api"
+  },
+  "repository": "changepointwatch",
+  "schema": "genlayer-intelligent-contract-deployment/v2",
+  "setup_transaction_hashes": [
+    "0xc1372a60401a6904fbfc33fca0695a70cd461b33d2f45dd43c741c52218db6bc"
+  ],
+  "source": {
+    "deployed_source_sha256": "3fe5391818f88794f49b8332937c11be0ef02117ffaae4ca9782d882690d8fb8",
+    "schema_methods_verified": [
+      "accept_change_as_baseline",
+      "changed_dimensions",
+      "record_snapshot"
+    ],
+    "source_sha256": "3fe5391818f88794f49b8332937c11be0ef02117ffaae4ca9782d882690d8fb8"
+  },
+  "tooling": {
+    "genlayer_test": "0.29.2",
+    "genvm_linter": "0.11.0",
+    "pyright": "1.1.411",
+    "pytest": "9.1.1",
+    "studionet_poll_interval_ms": 6000
+  },
+  "verification": {
+    "deployed_source_exact": true,
+    "execution_success": true,
+    "latest_final_readback": true,
+    "observed": {
+      "baseline": [
+        2,
+        1
+      ],
+      "downward_cusum": [
+        0,
+        0
+      ],
+      "state": "MONITORING",
+      "upward_cusum": [
+        0,
+        0
+      ]
+    },
+    "schema_read": true,
+    "status": "FINALIZED"
+  },
+  "verified_at": "2026-08-25T22:14:46.639819Z",
+  "wallet_addresses": [
+    "0xdE9923495DAC3dE04df9274635E8a7BE0F91b212",
+    "0xF948D62B2D829cf66B72B3D09Ac887D98B1D7D6F",
+    "0xa0B08FC296f1522fE4e4741BebFd01123A80539f",
+    "0xa0E98F1748542b5d677357403C7D2C9E33fA590c",
+    "0x4e52D934570713395Ee661b6217f1e8440B56c94"
+  ],
+  "wallet_policy": "repository-specific disposable bundle outside workspace; no cross-repository reuse"
+}
