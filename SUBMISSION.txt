@@ -1,0 +1,40 @@
+18. ChangePointWatch
+
+Contribution Date
+08/25/2026
+
+Title
+ChangePointWatch - Semantic cumulative-sum change detection
+
+Notes / Description
+Built ChangePointWatch, a reusable GenLayer intelligent contract for semantic cumulative-sum change detection. Consensus emits a closed signal vector for each snapshot; deterministic per-dimension CUSUM detects sustained change rather than a one-off difference. One deployment supports multiple independently keyed records and callers. Inputs are public, caller-supplied snapshots; the contract does not automatically fetch or authenticate sources and moves no funds. GenVM lint, strict type checking, 5 direct tests and one five-validator GLSim flow passed. StudioNet verified successful finalized intelligent execution, final-state readback and matching deployed source.
+
+Evidence 1 Type
+GitHub Repository
+
+Evidence 1 URL
+https://github.com/Leokings/changepointwatch
+
+Evidence 2 Type
+GitHub File
+
+Evidence 2 URL
+https://github.com/Leokings/changepointwatch/blob/main/deployments/studionet.json
+
+Evidence 3 Type
+GenLayer Studio Contract
+
+Evidence 3 URL
+https://studio.genlayer.com/?import-contract=0xB89CfedB9495a44f0E2a35EDfdCA77CE0Db495e0
+
+Evidence 4 Type
+GenLayer Explorer Contract
+
+Evidence 4 URL
+https://explorer-studio.genlayer.com/address/0xB89CfedB9495a44f0E2a35EDfdCA77CE0Db495e0
+
+Evidence 5 Type
+Other
+
+Evidence 5 URL
+https://explorer-studio.genlayer.com/tx/0x4ece532d5de99ad77071e420704f152809bfba22d771577a964a7ed552f2c0f8
