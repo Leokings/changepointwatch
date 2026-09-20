@@ -59,13 +59,16 @@ def _dimensions(raw: str) -> list[str]:
     if not 2 <= len(items) <= MAX_DIMENSIONS:
         _error("invalid_dimensions")
     output: list[str] = []
+    normalized: list[str] = []
     for item in items:
         if not isinstance(item, str):
             _error("invalid_dimension")
         dimension = _words(item, "dimension", 3, 100)
-        if dimension in output:
+        dimension_key = dimension.lower()
+        if dimension_key in normalized:
             _error("duplicate_dimension")
         output.append(dimension)
+        normalized.append(dimension_key)
     return output
 
 
@@ -122,6 +125,8 @@ class ChangePointWatch(gl.Contract):
     ) -> str:
         owner = str(gl.message.sender_address)
         sensor_text = str(sensor)
+        if sensor_text.lower() == "0x" + "0" * 40:
+            _error("invalid_sensor")
         if owner.lower() == sensor_text.lower():
             _error("sensor_must_be_distinct")
         slack_value = int(slack)
@@ -192,12 +197,10 @@ SNAPSHOT_END"""
             if not isinstance(leader, gl.vm.Return):
                 return False
             try:
-                leader_signals = cast(list[int], leader.calldata.get("signals"))
+                leader_record = _normalize_signals(leader.calldata, len(dimensions))
+                leader_signals = cast(list[int], leader_record["signals"])
                 validator_signals = cast(list[int], emit()["signals"])
-                return len(leader_signals) == len(validator_signals) and all(
-                    abs(left - right) <= 1
-                    for left, right in zip(leader_signals, validator_signals)
-                )
+                return leader_signals == validator_signals
             except Exception:
                 return False
 

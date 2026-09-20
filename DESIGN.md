@@ -8,7 +8,8 @@ This is the contract's reusable mechanism, not a renamed domain wrapper.
 
 ## Consensus boundary
 
-Validators accept adjacent semantic bands within one step; deterministic CUSUM state remains bounded and explicit.
+Validators normalize the leader output through the same closed schema and must
+reproduce every discrete signal band exactly before CUSUM state can change.
 
 Every model response is normalized to an exact JSON shape, bounded list sizes,
 closed indexes or bands, and deterministic ordering before it can affect state.

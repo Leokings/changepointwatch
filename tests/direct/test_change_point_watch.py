@@ -57,3 +57,47 @@ def test_signal_band_is_bounded(contract, direct_vm, direct_alice, direct_bob):
     direct_vm.mock_llm(r".*Emit one closed semantic signal band.*", json.dumps({"signals": [9, 2]}))
     with direct_vm.expect_revert("[LLM_ERROR] invalid_signal_band"):
         contract.record_snapshot(watch_id, "s0", "This valid-length public snapshot triggers a malformed model signal test.")
+
+
+def test_validator_rejects_adjacent_signal_disagreement(contract, direct_vm, direct_alice, direct_bob):
+    watch_id = _open(contract, direct_vm, direct_alice, direct_bob)
+    _snapshot(contract, direct_vm, direct_bob, watch_id, "s0", [2, 2])
+    assert direct_vm.run_validator() is True
+    direct_vm.clear_mocks()
+    direct_vm.mock_llm(
+        r".*Emit one closed semantic signal band for every monitored dimension.*",
+        json.dumps({"signals": [3, 2]}),
+    )
+    assert direct_vm.run_validator() is False
+
+
+def test_validator_rejects_extra_leader_fields(contract, direct_vm, direct_alice, direct_bob):
+    watch_id = _open(contract, direct_vm, direct_alice, direct_bob)
+    _snapshot(contract, direct_vm, direct_bob, watch_id, "s0", [2, 2])
+    assert direct_vm.run_validator(leader_result={"signals": [2, 2], "extra": True}) is False
+
+
+def test_dimension_names_must_be_unique_case_insensitively(contract, direct_vm, direct_alice, direct_bob):
+    direct_vm.sender = direct_alice
+    with direct_vm.expect_revert("duplicate_dimension"):
+        contract.open_watch(
+            "duplicate-dimensions",
+            json.dumps(["Urgency", "urgency"]),
+            1,
+            2,
+            direct_bob,
+            POLICY,
+        )
+
+
+def test_zero_address_cannot_be_the_sensor(contract, direct_vm, direct_alice):
+    direct_vm.sender = direct_alice
+    with direct_vm.expect_revert("invalid_sensor"):
+        contract.open_watch(
+            "zero-sensor",
+            DIMENSIONS,
+            1,
+            2,
+            "0x" + "0" * 40,
+            POLICY,
+        )

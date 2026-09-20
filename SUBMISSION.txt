@@ -1,40 +1,14 @@
-18. ChangePointWatch
+TITLE
+ChangePointWatch — Semantic CUSUM Change Detection
 
-Contribution Date
-08/25/2026
+DESCRIPTION
+ChangePointWatch is a reusable GenLayer intelligent contract for detecting sustained semantic change in public, caller-supplied snapshots. Validators independently produce the same bounded 0–4 signal vector under a caller-defined policy, then deterministic two-sided per-dimension CUSUM records the audit trail and identifies changed dimensions. The reviewed version requires an exact closed leader schema and exact validator agreement, and rejects an unusable zero-address sensor. GenVM lint, strict type checking, 9 direct tests, a five-validator GLSim flow, finalized StudioNet execution, latest-final readback, and exact deployed-source verification all pass.
 
-Title
-ChangePointWatch - Semantic cumulative-sum change detection
-
-Notes / Description
-Built ChangePointWatch, a reusable GenLayer intelligent contract for semantic cumulative-sum change detection. Consensus emits a closed signal vector for each snapshot; deterministic per-dimension CUSUM detects sustained change rather than a one-off difference. One deployment supports multiple independently keyed records and callers. Inputs are public, caller-supplied snapshots; the contract does not automatically fetch or authenticate sources and moves no funds. GenVM lint, strict type checking, 5 direct tests and one five-validator GLSim flow passed. StudioNet verified successful finalized intelligent execution, final-state readback and matching deployed source.
-
-Evidence 1 Type
-GitHub Repository
-
-Evidence 1 URL
-https://github.com/Leokings/changepointwatch
-
-Evidence 2 Type
-GitHub File
-
-Evidence 2 URL
+EVIDENCE
+https://explorer-studio.genlayer.com/address/0x166a33aaad7f14a4a741fA55f737ae4018483325
+https://explorer-studio.genlayer.com/tx/0xb7c5107099c88fb58872e5aa315d3d66d1307746a628f41a783f4673f208509d
+https://explorer-studio.genlayer.com/tx/0x245b64d30062701befa4a63dc97d03106bdbe35bf75a582e5d3975fead5ab0d9
 https://github.com/Leokings/changepointwatch/blob/main/deployments/studionet.json
 
-Evidence 3 Type
-GenLayer Studio Contract
-
-Evidence 3 URL
-https://studio.genlayer.com/?import-contract=0xB89CfedB9495a44f0E2a35EDfdCA77CE0Db495e0
-
-Evidence 4 Type
-GenLayer Explorer Contract
-
-Evidence 4 URL
-https://explorer-studio.genlayer.com/address/0xB89CfedB9495a44f0E2a35EDfdCA77CE0Db495e0
-
-Evidence 5 Type
-Other
-
-Evidence 5 URL
-https://explorer-studio.genlayer.com/tx/0x4ece532d5de99ad77071e420704f152809bfba22d771577a964a7ed552f2c0f8
+GITHUB REPOSITORY
+https://github.com/Leokings/changepointwatch

@@ -30,12 +30,13 @@ python tests/run_glsim.py --port 4000 --validators 5
 gltest tests/integration -q --network localnet
 ```
 
-The live smoke test is opt-in and requires a repository-specific wallet bundle
-outside the repository. It waits for finalized receipts, reads `LATEST_FINAL`,
-retrieves deployed source and schema from StudioNet, and fails unless the source
-bytes exactly match this repository.
+The live smoke test is opt-in and creates fresh disposable wallets in memory by
+default; an external repository-specific wallet bundle is optional. It waits
+for finalized receipts, reads `LATEST_FINAL`, retrieves deployed source and
+schema from StudioNet, and fails unless the source bytes exactly match this
+repository. Private keys are never printed or persisted by the default path.
 
-StudioNet contract: https://explorer-studio.genlayer.com/address/0xB89CfedB9495a44f0E2a35EDfdCA77CE0Db495e0
+StudioNet contract: https://explorer-studio.genlayer.com/address/0x166a33aaad7f14a4a741fA55f737ae4018483325
 
 See `AUDIT.md`, `ORIGINALITY.md`, `SOURCE_POLICY.md`, `SECURITY.md`,
 `SUBMISSION.md`, and `deployments/studionet.json` for the final evidence.

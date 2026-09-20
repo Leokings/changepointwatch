@@ -1,33 +1,32 @@
-Project name: ChangePointWatch
+# Intelligent-contract submission
 
-Category: Intelligent Contracts
+## Title
 
-Batch: B
+ChangePointWatch — Semantic CUSUM Change Detection
 
-One-line description: Semantic cumulative-sum change detection.
+## Description
 
-What it does: Consensus emits a closed signal vector for each snapshot; deterministic per-dimension CUSUM detects sustained change rather than a one-off difference.
+ChangePointWatch is a reusable GenLayer intelligent contract for detecting
+sustained semantic change in public, caller-supplied snapshots. For each
+snapshot, GenLayer validators independently produce the same bounded 0–4 signal
+vector under a caller-defined policy. Deterministic contract code then applies
+two-sided per-dimension CUSUM, records the audit trail, identifies changed
+dimensions, and lets the watch owner explicitly accept a detected change as the
+new baseline. One deployment supports many owner-keyed watches and separate
+sensor wallets. The reviewed version requires an exact closed leader schema and
+exact validator agreement, preventing a one-band leader bias from accumulating
+into a false change. It also rejects an unusable zero-address sensor. GenVM lint
+and strict type checking pass, all 9 direct tests pass, the five-validator GLSim
+flow passes, and the exact source was redeployed and exercised successfully on
+StudioNet on 2026-09-20.
 
-Why GenLayer: GenLayer consensus performs the bounded semantic step, then deterministic contract code executes and stores the mechanism-specific result.
+## Evidence
 
-Reusable: Yes. One deployment supports many independently keyed records and callers; the live fixture is only an example.
+- Contract: https://explorer-studio.genlayer.com/address/0x166a33aaad7f14a4a741fA55f737ae4018483325
+- Deployment: https://explorer-studio.genlayer.com/tx/0xb7c5107099c88fb58872e5aa315d3d66d1307746a628f41a783f4673f208509d
+- Intelligent write: https://explorer-studio.genlayer.com/tx/0x245b64d30062701befa4a63dc97d03106bdbe35bf75a582e5d3975fead5ab0d9
+- Exact-source proof: https://github.com/Leokings/changepointwatch/blob/main/deployments/studionet.json
 
-Repository: https://github.com/Leokings/changepointwatch (private; reviewers require read access).
+## GitHub repository
 
-Contract source: contracts/change_point_watch.py
-
-Source SHA-256: 3fe5391818f88794f49b8332937c11be0ef02117ffaae4ca9782d882690d8fb8
-
-StudioNet contract: https://explorer-studio.genlayer.com/address/0xB89CfedB9495a44f0E2a35EDfdCA77CE0Db495e0
-
-Deployment transaction: https://explorer-studio.genlayer.com/tx/0x4fa5073f936228b7240ed68e13720559c1a3c4b89e971d98461c39b4f6b8743a
-
-Intelligent transaction: https://explorer-studio.genlayer.com/tx/0x4ece532d5de99ad77071e420704f152809bfba22d771577a964a7ed552f2c0f8
-
-Verification: GenVM lint PASS; strict typecheck PASS; 5 direct tests PASS; five-validator GLSim PASS; finalized StudioNet intelligent write and latest-final readback PASS; exact deployed-source and schema verification PASS.
-
-Originality: Compared with 161 workspace contract sources. Nearest pre-existing structural score is 0.202996; mechanism and source hash are distinct.
-
-Data boundary: Caller-supplied public data only. No external source fetching, funds, identity attestation, legal effect, or private-data guarantee.
-
-Plain-text portal fields: SUBMISSION.txt. Notes / Description is within the 1,000-character form limit.
+https://github.com/Leokings/changepointwatch
